@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Guru Escrow Team | Secure Digital Transactions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+    
+    <style>
+        /* --- Variables & Typography --- */
+        :root {
+            --dark-bg: #121212; /* Deep Black/Dark Grey */
+            --card-bg: #1e1e1e; /* Slightly lighter card background */
+            --text-color: #e0e0e0; /* Light text on dark background */
+            --accent-blue: #00bcd4; /* Cyan/Glowing Blue Accent */
+            --highlight-green: #4caf50; /* Trust/Success Green */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.5s;
+        }
+
+        /* --- Utility Classes --- */
+        .glowing-text {
+            color: var(--text-color);
+            text-shadow: 0 0 5px var(--accent-blue), 0 0 10px rgba(0, 188, 212, 0.5);
+            transition: text-shadow 0.3s ease-in-out;
+        }
+
+        /* --- Header & Logo --- */
+        header {
+            background-color: var(--card-bg);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+
+        .site-logo {
+            width: 180px;
+            height: auto;
+            background-color: white; /* Logo itself is white background */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+        }
+
+        .tagline {
+            margin-top: 15px;
+            font-size: 1.1em;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: var(--card-bg);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-description {
+            font-size: 1.1em;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+
+        /* --- Call-to-Action (CTA) Button --- */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--accent-blue);
+            color: var(--dark-bg);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+        }
+
+        .cta-button:hover {
+            background-color: #00e5ff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.8);
+        }
+
+        /* --- Trust Score --- */
+        .trust-score {
+            padding: 30px;
+            background: linear-gradient(45deg, #1e1e1e, #2a2a2a);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 25px;
+            transition: transform 0.4s;
+        }
+
+        .trust-score:hover {
+            transform: scale(1.05);
+        }
+
+        .trust-score .deal-count {
+            font-size: 4.5em;
+            font-weight: 700;
+            color: var(--highlight-green);
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+            display: block;
+            line-height: 1;
+        }
+
+        .trust-score p {
+            font-size: 1.3em;
+            color: var(--text-color);
+            margin: 5px 0 0;
+        }
+
+        .small-text {
+            font-size: 0.9em;
+            color: #888;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        /* --- Team/Grid Section (Used for team and how-it-works) --- */
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            flex: 0 0 280px; 
+            padding: 25px;
+            border-radius: 10px;
+            background-color: var(--dark-bg);
+            border: 1px solid #333;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+            border-color: var(--accent-blue);
+        }
+
+        .role {
+            font-weight: 600;
+            color: var(--accent-blue);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1em;
+            text-transform: uppercase;
+        }
+        
+        /* Specific styling for How It Works steps */
+        #how-it-works .team-member .role {
+             color: var(--highlight-green);
+             font-size: 1.5em; /* Bigger step numbers */
+        }
+        #how-it-works .team-member h3 {
+             color: var(--accent-blue);
+        }
+
+        .team-member h3 {
+            margin: 5px 0 20px;
+            font-size: 1.6em;
+            color: var(--text-color);
+        }
+
+        .handle {
+            background-color: var(--highlight-green);
+            color: var(--dark-bg);
+            padding: 10px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .handle:hover {
+            background-color: #66bb6a;
+            box-shadow: 0 0 10px var(--highlight-green);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            background-color: #0d0d0d;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .trust-score .deal-count {
+                font-size: 3.5em;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .team-grid {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .team-member {
+                flex: 1 1 100%; 
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Guru Escrow Team Logo - Shield and Arrows" class="site-logo">
+        </div>
+        <p class="tagline">🇮🇳 India's **Trusted Group** on Telegram</p>
+    </header>
+
+    <div class="container">
+
+        <section id="mission">
+            <h2 class="glowing-text">Safe and Secure Transactions, Guaranteed.</h2>
+            <p class="section-description">
+                We are **The Famous Escrow Group** on Telegram, dedicated to providing a secure and reliable platform for all your high-value digital transactions. We stand as the trusted third party, ensuring that both buyer and seller are protected throughout the deal.
+            </p>
+            <a href="https://t.me/SILENT_HEREE" target="_blank" class="cta-button telegram-button">
+                🔗 Start a Secure Deal on Telegram
+            </a>
+        </section>
+
+        <section id="how-it-works">
+            <h2 class="glowing-text">How The Guru Escrow Process Works</h2>
+            <p class="section-description" style="margin-bottom: 40px;">
+                Our simple, 3-step process guarantees safety for both buyers and sellers, ensuring funds and assets are exchanged correctly every time.
+            </p>
+
+            <div class="team-grid" style="gap: 20px;">
+                
+                <div class="team-member" style="background-color: var(--dark-bg); border-color: var(--accent-blue);">
+                    <span class="role">STEP 1</span>
+                    <h3>Buyer Deposits Funds</h3>
+                    <p>The buyer initiates the deal by sending the agreed-upon funds to **The Guru Escrow Team** wallet. We confirm receipt and hold the payment securely.</p>
+                </div>
+
+                <div class="team-member" style="background-color: var(--dark-bg); border-color: var(--accent-blue);">
+                    <span class="role">STEP 2</span>
+                    <h3>Seller Delivers Asset</h3>
+                    <p>Upon confirmation of funds by us, the seller safely delivers the product, service, or digital asset to the buyer. The buyer verifies the delivery.</p>
+                </div>
+
+                <div class="team-member" style="background-color: var(--dark-bg); border-color: var(--accent-blue);">
+                    <span class="role">STEP 3</span>
+                    <h3>Escrow Releases Payment</h3>
+                    <p>Once the buyer confirms they have received and verified the asset, The Guru Escrow Team immediately releases the funds to the seller. Deal complete!</p>
+                </div>
+
+            </div>
+            
+            <a href="https://t.me/SILENT_HEREE" target="_blank" class="cta-button telegram-button" style="margin-top: 40px;">
+                Start Your Secure Deal Now
+            </a>
+        </section>
+
+        <section id="trust-score">
+            <h2 class="glowing-text">Our Track Record of Trust</h2>
+            <div class="trust-score">
+                <span class="deal-count">720+</span>
+                <p>Deals Completed Safe and Securely</p>
+                <p class="small-text">Verified transactions for complete peace of mind.</p>
+            </div>
+        </section>
+
+        <section id="team">
+            <h2 class="glowing-text">Meet The Gurus Behind The Trust</h2>
+            <div class="team-grid">
+                
+                <div class="team-member">
+                    <span class="role">Founder</span>
+                    <h3>@NexusMM</h3>
+                    <a href="https://t.me/NexusMM" target="_blank" class="handle">Contact Founder</a>
+                </div>
+
+                <div class="team-member">
+                    <span class="role">Owner</span>
+                    <h3>@SILENT_HEREE</h3>
+                    <a href="https://t.me/SILENT_HEREE" target="_blank" class="handle">Contact Owner</a>
+                </div>
+
+                <div class="team-member">
+                    <span class="role">Co-Owner</span>
+                    <h3>@MR_ACERT</h3>
+                    <a href="https://t.me/MR_ACERT" target="_blank" class="handle">Contact Co-Owner</a>
+                </div>
+                
+                <div class="team-member other-staff">
+                    <span class="role">Other Escrow Staff</span>
+                    <p>Dedicated staff ensuring every transaction is seamless.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 The Guru Escrow Team. All Rights Reserved.</p>
+        <p class="small-text">Always verify the official Telegram handles before starting a deal.</p>
+    </footer>
+
+</body>
+</html>
